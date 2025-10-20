@@ -1,5 +1,4 @@
-
-<#
+ï»¿<#
 .SYNOPSIS
     Script para liberar espacio en disco en sistemas Windows.
 .DESCRIPTION
