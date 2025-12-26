@@ -305,19 +305,19 @@ El guion puede recibir parámetros desde herramientas externas, pero también pu
 
 #### limpieza_disco.ps1
 
-Menú interactivo para liberar espacio en disco combinando tareas comunes de mantenimiento.
+Menú interactivo para liberar espacio en disco combinando tareas comunes de mantenimiento, con un reporte final detallado.
 
 **Funcionalidades:**
-- Comprueba privilegios elevados y mantiene un contador de espacio liberado durante la sesión.
-- Incluye funciones para borrar temporales de usuario/SO, limpiar `SoftwareDistribution\Download`, vaciar la papelera, ejecutar `dism /online /cleanup-image /startcomponentcleanup` y purgar logs de eventos/CBS/DISM.
-- Permite ejecutar cada acción individualmente o lanzar la opción “Realizar todas las limpiezas”.
-- Cada módulo informa cuánto espacio liberó y maneja reinicios del servicio `wuauserv` cuando aplica.
+- **Reporte Dual:** Al finalizar, distingue entre "Espacio liberado" (archivos borrados explícitamente) y "Impacto real en Disco C:" (ganancia neta de espacio libre), capturando limpiezas complejas como WinSxS.
+- **Medición Precisa:** Calcula el tamaño de la Papelera de Reciclaje y los logs de eventos antes de eliminarlos para un reporte exacto.
+- **Limpieza Integral:** Borra temporales, caché de Windows Update, vacía la papelera, ejecuta `dism ... /startcomponentcleanup` (WinSxS) y purga logs de eventos/CBS/DISM.
+- **Interactivo:** Permite ejecutar acciones individuales o todas a la vez.
 
 **Uso:**
 ```powershell
 .\limpieza_disco.ps1
 ```
-Interactivo; selecciona opciones `1-6` o `Q` para salir.
+Interactivo; selecciona opciones `1-6` o `Q` para salir y ver el informe.
 
 #### reset_wupdate.ps1
 
